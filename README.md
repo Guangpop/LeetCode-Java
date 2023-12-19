@@ -1,6 +1,6 @@
-紀錄使用IDEA IntelliJ加上LeetCode Editor Plugin刷題的心得以及設置
+紀錄使用IDEA IntelliJ加上LeetCode Editor Plugin刷題的心得跟設置
 
-略過Plugin安裝以及大部分設定,作者以及參考的網頁已經說明過了  
+略過Plugin安裝以及大部分設定,作者和參考的網頁已經說明過了  
 有關於Java Project的設置部分:
 
 1. 開啟IntelliJ的Project Structure
@@ -30,4 +30,4 @@ public class P$!velocityTool.replaceChars($!{question.frontendQuestionId}," -.",
 參考  
 1. Rayer - 使用GoLang刷題: https://github.com/Rayer/leetcode-go  
 2. kevinhwang - 提供客製化設置For Java: https://www.kevinhwang.cn/?p=864  
- 我使用的是原版Plugin以及英文版LeetCode所以只是修改了小部分Tmeplate設定  
+ 我使用的是原版Plugin搭配英文版LeetCode所以只是修改了小部分Template設定  
