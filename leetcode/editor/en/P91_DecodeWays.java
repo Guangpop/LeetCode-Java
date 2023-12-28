@@ -76,31 +76,38 @@ public class P91_DecodeWays{
 class Solution {
 
     public int numDecodings(String s) {
-        int result[] = new int[s.length()];
+        int size = s.length();
+        char[] c = s.toCharArray();
+        int result[] = new int[size];
 
-        char c[] = s.toCharArray();
-        if (c[0] == '0') return 0;
-        if (s.length() < 2) return 1;
-        if (c[1] == '0' && c[0] > '2') return 0;
+        // list all cases for result 0 and 1
+        if (c[0] == '0' || size == 0) return 0;
+        if (size == 1) return 1;
+        if (size > 1) {
+            if (c[1] == '0') {
+                if (c[0] > '2') return 0;
+                else result[1] = 1;
+            } else if(c[0] == '1' || (c[0] == '2' && c[1] < '7')) result[1] = 2;
+            else result[1] = 1;
+        }
         result[0] = 1;
-        result[1] = c[1] == '0' ||
-                (c[0] == '2' && c[1] > '6') ||
-                c[0] > '2' ? 1 : 2;
-        int i = 2;
-        for ( ; i < s.length() ; ++i) {
+
+        for (int i = 2 ; i < size ; ++i) {
+            // no result case
+            if (c[i] == '0' && (c[i-1] > '2' || c[i-1] == '0')) return 0;
+
+            // result cases
             if (c[i] == '0') {
-                if ((c[i-1] > '2') || (c[i-1] == '0')) return 0;
-                else result[i] = result[i-2];
-            } else if (c[i-1] == '0' ||
-                    (c[i-1] == '2' && c[i] > '6') ||
-                    c[i-1] > '2') {
-                result[i] = result[i-1];
-            } else {
+                result[i] = result[i-2];
+            }
+            else if (c[i-1] == '1' || (c[i-1] == '2' && c[i] < '7')) {
                 result[i] = result[i-1] + result[i-2];
+            } else {
+                result[i] = result[i-1];
             }
         }
 
-        return result[i-1];
+        return result[size-1];
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
